@@ -5,7 +5,6 @@ import (
     "net/http"
     "math/big"
     "strconv"
-    "time"
 )
 
 func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
