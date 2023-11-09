@@ -2,6 +2,7 @@ package main
 
 import (
     "fmt"
+    "log"
     "net/http"
     "math/big"
     "strconv"
@@ -37,7 +38,14 @@ func factorialHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+    log.Println("Starting the web server...")
     http.HandleFunc("/", helloWorldHandler)
     http.HandleFunc("/factorial", factorialHandler)
-    http.ListenAndServe(":8080", nil)
+    
+    log.Println("Waiting for incoming connections...")
+
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		log.Fatalf("Server error: %v", err)
+	}
 }
